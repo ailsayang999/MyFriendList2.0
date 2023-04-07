@@ -1,0 +1,484 @@
+head,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(232, 253, 253);
+  font-family: 'Alkatra', cursive, sans-serif;
+  // font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(67, 96, 101);
+}
+
+.page-container {
+  // outline: 1px solid rgb(219, 175, 17);
+  margin: 60px 0 50px 0;
+  padding: 19px 20px;
+  position: relative;
+  min-height: 100%;
+}
+
+///////////////////////////// header /////////////////////////
+header {
+  // Positioning
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 4;
+  // Box Model
+  height: 60px;
+  box-shadow: 0px 4px 20px 2px rgba(26, 90, 90, 0.2);
+  background-color: rgb(232, 253, 253, 0.8);
+}
+
+nav {
+  // outline: 1px solid tomato;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-left {
+  // outline:1px solid salmon;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 140px;
+  font-size: 20px;
+}
+
+.favorite {
+  font-size: 16px;
+  color: gray;
+  margin-left: 15px;
+  text-decoration: none;
+}
+.fa-house:hover {
+  color: rgb(13, 184, 210);
+  transform: scale(1.2);
+}
+
+// ////////////////////////////////  main  /////////////////////////////
+main {
+  // outline: 1px solid red;
+  padding: 10px 0;
+}
+
+.row {
+  // outline: 1px solid rgb(195, 210, 58);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 4px;
+}
+
+
+
+
+.col {
+  //Display
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+// ///////////////////Search Bar//////////////////
+.searchBarContainer {
+  position: fixed;
+  top:80px;
+  left:30px;
+  z-index: 10;
+}
+
+
+
+.searchBar {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 60px;
+  transition: 0.5s;
+  box-shadow: 5px 5px 10px 2px rgba(37, 134, 134, 0.5);
+  overflow: hidden; //把所有超出的部分藏起來
+  opacity: 0.8;
+}
+
+.searchBar.active {
+  width: 360px;
+  opacity: 1;
+}
+
+.searchBar .searchIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.searchBar .searchIcon::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 3px solid #287;
+  border-radius: 50%;
+  transform: translate(-4px, -4px);
+}
+
+.searchBar .searchIcon::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 12px;
+  background-color: #287;
+  transform: translate(6px, 6px) rotate(315deg);
+}
+
+.searchBar .input {
+  position: relative;
+  width: 300px;
+  height:60px;
+  left:60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchBar .input input {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height:100%;
+  border:none; //把search bar 預設的border消除
+  outline: none;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+// /////////////////// Card //////////////////
+.cardContainer {
+  display: flex;
+}
+
+.card {
+  // outline: 1px solid salmon;
+  position: relative;
+  height: 220px;
+  width: 200px;
+  margin: 20px;
+  box-shadow: 5px 5px 20px 2px rgba(26, 90, 90, 0.5);
+  border-radius: 10px;
+  background-color: rgb(55, 186, 195);
+  overflow: hidden; //可以調整看看，會發生什麼事
+}
+
+.card:hover {
+  cursor: pointer; //滑鼠移過去會產生變化
+  box-shadow: 5px 5px 20px 2px rgba(26, 90, 90);
+}
+
+.card:hover .intro {
+  //改變intro的absolute positioning
+  height: 73px; //height必須大於card-title加上card-detail的height，才能整個露出來
+  bottom: 0px;
+  background-color: rgb(16, 77, 95);
+}
+
+.card:hover .card-detail {
+  //改變card-detail的可見度
+  opacity: 1;
+  visibility: visible;
+}
+
+.card:hover .card-img {
+  //讓card-img動態放大和旋轉
+  transform: scale(1.2) rotate(-8deg);
+  transition: 0.5s;
+  opacity: 0.3;
+}
+
+.card-img {
+  height: 220px;
+  border-radius: 3px;
+}
+
+.intro {
+  position: absolute;
+  bottom: 0px;
+  height: 40px; //調整看看，看card-detail去掉visibility會變成什麼樣子
+  width: 200px;
+  padding: 2px 5px;
+  box-sizing: border-box; //why?
+  background: rgb(27, 27, 27, 0.2);
+  color: white;
+  transition: 0.5s; //在hover轉換時所花時間
+}
+
+.card-title {
+  margin: 5px;
+  height: 20px;
+  font-size: 20px;
+}
+
+.card-detail {
+  margin: 10px 5px;
+  height: 40px;
+  font-size: 15px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.info {
+  margin: 1px 7px;
+}
+
+.fa-heart {
+  position: absolute;
+  right: 16px;
+  top: 25px;
+  color: white;
+}
+
+.fa-heart:hover {
+  color: rgb(203, 83, 145);
+  box-shadow: 4px 0px 20px 2px rgba(26, 90, 90, 0.5);
+  transform: scale(1.1) rotate(5deg);
+  transition: 0.3s;
+}
+
+.fa-square-minus {
+  position: absolute;
+  right: 16px;
+  top: 25px;
+  color: white;
+}
+
+.fa-square-minus:hover {
+  color: rgb(255, 2, 2);
+  box-shadow: 4px 0px 20px 2px rgba(26, 90, 90, 0.5);
+  transform: scale(1.1) rotate(5deg);
+  transition: 0.3s;
+}
+
+
+
+.add-btn {
+  position:absolute;
+  right: 16px;
+  top: 19px;
+  border: none;
+  border-radius: 5px;
+  color: rgb(11, 100, 82);
+  padding: 5px 10px;
+  margin: 0px;
+
+}
+
+
+.fa-circle-info {
+  position: absolute;
+  right: 16px;
+  top: 22px;
+  color: white;
+}
+
+.fa-circle-info:hover {
+  color: rgb(53, 214, 203);
+  box-shadow: 4px 0px 20px 2px rgba(0, 0, 0, 0.9);
+  transform: scale(1.6) rotate(5deg);
+  transition: 0.3s;
+}
+
+
+
+
+
+
+
+
+
+// /////////////////// footer //////////////////
+footer {
+  // outline: 1px solid red;
+  // Positioning
+  position: fixed;
+  bottom: 0px;
+  right: 0;
+  left: 0;
+  // Box Model
+  height: 90px;
+  box-shadow: 4px 0px 20px 2px rgba(26, 90, 90, 0.2);
+  background-color: rgb(232, 253, 253, 0.4);
+}
+
+
+
+
+
+
+// /////////Modal////////
+.page-container.active {
+  filter:blur(20px);
+  pointer-events: none; //模糊掉後就不能再滑鼠按more回復
+  // user-select: none;
+  background-color: #287;
+}
+
+
+.close-btn{
+  // Positioning
+  position:absolute;
+  right:40px;
+  bottom:20px;
+  // Display
+  display: inline-block;
+  //Box Model
+  padding: 5px 20px;
+  margin-top: 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color:#fff;
+  background-color: #118bc4;
+}
+
+.close-btn:hover {
+  color: #118bc4;
+  background-color: #fff;
+  border: 1px solid #118bc4;
+  transform: scale(1.2);
+  transition: 0.3s;
+}
+
+#popup{
+  // Positioning
+  position:fixed;
+  top: 40%;
+  left: 50%;
+  //Box Model
+  width:700px;
+  padding:40px;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.30);
+  border-radius: 60px;
+  //other
+  font-size: large;
+  color:rgb(9, 74, 84);
+  font-weight: bold;
+  transform: translate(-50%,-50%);
+  background-color: #d8f7f3;
+  z-index: 12;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#popup.active{
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.popup-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 3px;
+}
+.popup-img{
+  // background:rgb(55, 186, 195)
+  width: 55%;
+  background: linear-gradient(45deg, rgb(3, 248, 154),rgb(18, 175, 203));
+  border-radius: 25%;
+  overflow: hidden;
+}
+
+.popup-detail{
+  width: 40%;
+}
+
+
+
+////////paginator///////////////
+.paginatorContainer {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+.pagination ul{
+  display: flex;
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 50px;
+}
+
+.pagination ul li {
+  color: #20b2aa;
+  list-style: none;
+  line-height: 45px;
+  text-align: center;
+  font-size:18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination ul li.numb {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  margin: 0 3px;
+}
+
+.pagination ul li.dots {
+  font-size: 22px;
+  cursor: default;
+}
+
+.pagination ul li.btn {
+  padding: 0 20px;
+}
+
+.pagination ul li.prev {
+  border-radius: 25px 5px 5px 25px;
+}
+
+.pagination ul li.next {
+  border-radius: 5px 25px 25px 5px;
+}
+
+
+.pagination ul li.active,
+.pagination ul li.numb:hover,
+.pagination ul li.btn:hover
+{
+  color: #fff;
+  background: #20b2aa;
+}
